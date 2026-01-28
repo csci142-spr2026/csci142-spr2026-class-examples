@@ -31,6 +31,7 @@ public class Square {
 	 * (we'll mostly use private), NOT "public"
 	 */
 	private double sideLength;
+	private double area;
 	
 	/*
 	 * This is a Square "constructor".  The sideLength passed in
@@ -42,6 +43,11 @@ public class Square {
 	public Square(double sideLength) {
 		this.sideLength = sideLength;
 	}
+	
+	public void calculateArea() {
+		area = sideLength * sideLength;
+	}
+	
 
 	public double getSideLength() {
 		return sideLength;
@@ -50,7 +56,13 @@ public class Square {
 	public void setSideLength(double sideLength) {
 		this.sideLength = sideLength;
 	}
-	
-	
+
+	public double getArea() {
+		return area;
+	}
+
+	public void setArea(double area) {
+		this.area = area;
+	}
 
 }
