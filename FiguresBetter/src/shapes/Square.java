@@ -15,7 +15,7 @@ public class Square {
 	}
 	
 	public String toString() {
-		return this.getClass().getName() + " sideLength = " + sideLength + "  area = " + area;
+		return this.getClass().getSimpleName() + " sideLength = " + sideLength + "  area = " + area;
 	}
 	
 	public double getSideLength() {
