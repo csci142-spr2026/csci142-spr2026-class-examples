@@ -6,12 +6,27 @@ import java.awt.Point;
 public class Main {
 
 	public static void main(String[] args) {
+		/* 
+		 * work with default Square
+		 * 
+		 * Below, "Square square0 = new Square()" means the "Square" is a class
+		 * and "square0" is an object.
+		 */
+		Square square0 = new Square();
+		System.out.println(square0);
+		
+		// Don't access static properties this way:
+		//System.out.println("A unit square has side length of " + square0.UNIT_LENGTH);
+		
+		// Access static properties in a "static way" like this:
+		System.out.println("A unit square has side length of " + Square.UNIT_LENGTH);
 		/*
 		 * square1 is ONLY "declared" in the next line.
 		 * The following line "instantiates" it.
 		 */
 		Square square1;
-		square1 = new Square(10.0, Color.BLUE, new Point(4,5));
+		
+		square1 = new Square(Square.UNIT_LENGTH, Color.BLUE, new Point(4,5));
 		square1.setSideLength(6.0);
 
 		Point point = new Point(6, 7);

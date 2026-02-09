@@ -3,37 +3,11 @@ package shapes;
 import java.awt.Color;
 import java.awt.Point;
 
-/*
- * "Square" is a "subclass" of the "superclass" Shape
- */
 public class Square extends Shape implements Location {
-	/*
-	 * "Information hiding" means hiding these private properties
-	 * so that they are only exposed to other classes in controlled ways,
-	 * namely through "accessors" ("setters" and "getters").
-	 * 
-	 * This also means these private values are "encapsulated" into
-	 * this class.
-	 * 
-	 * However, the "public final static" below can be seen outside 
-	 * of this class.  No problem because you can't change it
-	 * and it is common to ALL squares.
-	 */
 	public final static double UNIT_LENGTH = 1.0;
 	private double sideLength;
 	private Point point;
 	
-	/*
-	 * "this" means call this class constructor with 3 arguments, which
-	 * we have below
-	 * 
-	 * "super" means call the parent class constructor with its arguments
-	 * (in this case 1, the color)
-	 * 
-	 * In the "default" Square constructor below, it looks for the "signature"
-	 * of (double, Color) for another constructor; if you switch double and Color
-	 * below, it will fail!
-	 */
 	public Square() {
 		this(Square.UNIT_LENGTH, Color.WHITE);
 	}
@@ -50,32 +24,16 @@ public class Square extends Shape implements Location {
 		this.calculateArea();
 	}
 	
-	/*
-	 * This "toString()" method "overrides" the Object class toString() method
-	 */
 	public String toString() {
 		return this.getClass().getSimpleName() + " sideLength = " + sideLength 
 				+ "  area = " + area + super.toString()
 				+ "  location = (" + point.x + ", " + point.y + ")";
 	}
 	
-	/*
-	 * cloning is okay but copy constructor is better
-	 */
 	@Override
 	public Object clone() {
 		return new Square(sideLength, this.getColor(), new Point(point));
 	}
-	
-	/*
-	 * The preferred way to create a new object from this class is to use
-	 * a "copy constructor"
-	 * 
-	 * "static" does not mean you cannot change it (that is what "final"
-	 * means; it means it belongs to the class, not objects created from the
-	 * class; therefore it cannot call properties (or attributes or fields)
-	 * from within the static method.  We need to pass in a square.
-	 */
 	
 	public static Square copyOf(Square square) {
 		return new Square(square.sideLength, square.getColor(), new Point(square.locate()));
