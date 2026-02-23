@@ -6,37 +6,62 @@ public class KeyLock implements Lock {
 	private boolean isInserted;
 	
 	public KeyLock(int key) {
-		// TODO Auto-generated method stub
+		this.key = key;
+		this.isLocked = true;
+		this.isInserted = false;
 	}
 	
 	public boolean insertKey(int key) {
-		return false;	
+		if (this.isInserted) {
+			return false;
+		}
+		else if (this.key == key) {
+			this.isInserted = true;
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean removeKey() {
+		if (isInserted) {
+			isInserted = false;
+			return true;
+		}
 		return false;
 	}
 	
 	public boolean turn() {
+		if (isInserted) {
+			isLocked = false;
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean lock() {
-		// TODO Auto-generated method stub
+		/*
+		 * Here (!isLocked) is same as (isLocked == false) same as (isLocked != true)
+		 */
+		if (!isLocked) {
+			isLocked = true;
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean unlock() {
-		// TODO Auto-generated method stub
+		if (isInserted && isLocked) {
+			isLocked = false;
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean isLocked() {
-		// TODO Auto-generated method stub
-		return false;
+		return isLocked;
 	}
 
 }
