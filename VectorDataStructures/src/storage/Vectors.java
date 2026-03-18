@@ -17,8 +17,21 @@ public class Vectors {
 		System.out.println("Vector size: " + data.size());
 		System.out.println("Vector capacity: " + data.capacity());
 		
-		for (int i=0; i < 34; i++) {
-			data.add(i);
+//		for (int i=0; i < 33; i++) {
+//			data.add(i);
+//		}
+		
+		/* 
+		 * autoboxing: when an simple integer type is passed in to data.add()
+		 * it is automatically turned into an object of type Integer.
+		 */
+		data.add(4);
+		data.add(Integer.valueOf(55));
+		data.add(Double.valueOf(4.5));
+		data.add("Hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+		
+		for (Object o : data) {
+			System.out.println(o);
 		}
 		
 		System.out.println("Vector size: " + data.size());
